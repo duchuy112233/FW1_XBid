@@ -36,7 +36,7 @@ export class LoginComponent {
         localStorage.setItem('token', (data as UserLoginRes).token);
         localStorage.setItem('userId', (data as UserLoginRes).user._id);
 
-        setTimeout(() => this.router.navigate(['/']), 1000);
+        setTimeout(() => this.router.navigate(['/admin']), 1000);
       },
       error: (error) => {
         // show error

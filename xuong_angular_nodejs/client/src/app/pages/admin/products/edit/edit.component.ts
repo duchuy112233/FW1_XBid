@@ -6,9 +6,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../../../../../types/Category';
 import { CategoryService } from '../../../../services/category.service';
+
 
 @Component({
   selector: 'app-edit',
@@ -22,6 +23,8 @@ export class ProductEditComponent {
   categoryService = inject(CategoryService);
   productService = inject(ProductService);
   route = inject(ActivatedRoute);
+  router = inject(Router);
+ 
   productId!: string;
 
   addProductForm: FormGroup = new FormGroup({
@@ -68,7 +71,11 @@ export class ProductEditComponent {
       .editProduct(this.productId, this.addProductForm.value)
       .subscribe({
         next: () => {
-          console.log('thong bao + chuyen trang');
+       
+          setTimeout(
+            () => this.router.navigate(['/admin/products/list']),
+            1000
+          );
         },
         error: (error) => {
           // show error
