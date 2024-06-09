@@ -14,18 +14,21 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Image</th>
-              <th>Price</th>
-              <th>Actions</th>
+              <th>ID</th>
+              <th>TITLE</th>
+              <th>IMAGE</th>
+              <th>PRICE</th>
+              <th>ACTIONS</th>
             </tr>
           </thead>
           <tbody>
-            @for (product of products; track product._id) {
-            <tr>
+          
+            <tr *ngFor="let product of products; let i = index">
+              <td>{{ i + 1 }}</td>
               <td>{{ product.title }}</td>
               <td><img [src]="product.image" width="100px" /></td>
-              <td>{{ product.price }}</td>
+              <td>{{ product.price | number }}</td>
+
               <td class="">
                 <a
                   class="btn btn-warning me-2"
@@ -43,9 +46,14 @@
                 >
                   Delete
                 </button>
+                <a
+                  class="btn m-2 btn-info"
+                  [routerLink]="['/admin/products', product._id, 'bids']"
+                  >Bifs Info</a
+                >
               </td>
             </tr>
-            }
+          
           </tbody>
         </table>
       </div>

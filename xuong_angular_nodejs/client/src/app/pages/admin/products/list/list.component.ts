@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { Product } from '../../../../../types/Product';
 import { ProductService } from '../../../../services/product.service';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,CommonModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
